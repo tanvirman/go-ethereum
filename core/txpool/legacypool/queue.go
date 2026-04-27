@@ -59,14 +59,6 @@ func (q *queue) evictList() []common.Hash {
 	return removed
 }
 
-func (q *queue) stats() int {
-	queued := 0
-	for _, list := range q.queued {
-		queued += list.Len()
-	}
-	return queued
-}
-
 func (q *queue) content() map[common.Address][]*types.Transaction {
 	queued := make(map[common.Address][]*types.Transaction, len(q.queued))
 	for addr, list := range q.queued {
